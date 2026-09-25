@@ -16,20 +16,23 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[var(--paper)]/90 backdrop-blur-sm border-b border-[var(--line)]">
+    <header className="sticky top-0 z-40 w-full bg-[var(--paper)]/95 backdrop-blur-md border-b border-[var(--line-faint)] transition-all">
       <div className="max-w-[1240px] mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
-        {/* Monogram EB */}
+        {/* Solid Dark Monogram EB */}
         <Link
           href="/"
           className="group flex items-center gap-3 text-[var(--ink)] focus:outline-none"
           aria-label="Emmanuel Biolatiri Home"
         >
-          <div className="w-8 h-8 border border-[var(--ink)] flex items-center justify-center font-mono text-xs font-semibold tracking-wider group-hover:bg-[var(--ink)] group-hover:text-[var(--paper)] transition-colors duration-150">
+          <div className="w-8 h-8 bg-[var(--ink)] text-[var(--paper)] flex items-center justify-center font-mono text-xs font-bold tracking-wider shadow-sm transition-transform duration-200 group-hover:scale-105">
             EB
           </div>
-          <div className="hidden sm:flex flex-col">
-            <span className="text-sm font-medium tracking-tight">Emmanuel Biolatiri</span>
-            <span className="text-xs text-[var(--muted)] font-mono">Manchester, UK</span>
+          <div className="flex flex-col">
+            <span className="text-sm font-medium tracking-tight text-[var(--ink)]">Emmanuel Biolatiri</span>
+            <span className="text-[11px] text-[var(--muted)] font-mono flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
+              Manchester, UK · Platform &amp; Payments
+            </span>
           </div>
         </Link>
 
@@ -39,14 +42,15 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-[var(--ink-secondary)] hover:text-[var(--accent)] transition-colors duration-150 py-1 border-b border-transparent hover:border-[var(--accent)] font-medium"
+              className="text-[var(--ink-secondary)] hover:text-[var(--accent)] transition-colors duration-150 py-1 font-mono text-xs uppercase tracking-wider relative group"
             >
-              {link.label}
+              <span>{link.label}</span>
+              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--accent)] transition-all duration-200 group-hover:w-full" />
             </a>
           ))}
           <a
             href="mailto:hello@manuelbiolatiri.me"
-            className="text-xs font-mono px-3 py-1.5 border border-[var(--ink)] text-[var(--ink)] hover:bg-[var(--accent)] hover:border-[var(--accent)] hover:text-[var(--paper)] transition-colors duration-150"
+            className="text-xs font-mono px-3.5 py-1.5 border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-all duration-150 shadow-sm"
           >
             hello@manuelbiolatiri.me
           </a>
@@ -56,7 +60,7 @@ export function Header() {
         <div className="md:hidden flex items-center gap-3">
           <a
             href="mailto:hello@manuelbiolatiri.me"
-            className="text-xs font-mono px-2.5 py-1 border border-[var(--line-strong)] text-[var(--ink)]"
+            className="text-xs font-mono px-2.5 py-1 border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)]"
           >
             Email
           </a>

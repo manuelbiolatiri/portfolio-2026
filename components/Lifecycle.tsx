@@ -1,120 +1,158 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { LIFECYCLE_STAGES } from "@/data/lifecycle";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function Lifecycle() {
-  const [activeStep, setActiveStep] = useState<string>("01");
-  const currentStage = LIFECYCLE_STAGES.find((s) => s.step === activeStep) || LIFECYCLE_STAGES[0];
+  const [activeStageIndex, setActiveStageIndex] = useState(0);
+  const stageRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    stageRefs.current.forEach((el, index) => {
+      if (!el) return;
+
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 60%",
+        end: "bottom 60%",
+        onEnter: () => setActiveStageIndex(index),
+        onEnterBack: () => setActiveStageIndex(index),
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, []);
+
+  const scrollToStage = (index: number) => {
+    const el = stageRefs.current[index];
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
 
   return (
     <div className="w-full">
-      {/* Editorial progression bar (Desktop / Tablet) */}
-      <div className="border border-[var(--line)] bg-[var(--paper)]">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-y lg:divide-y-0 divide-[var(--line)]">
-          {LIFECYCLE_STAGES.map((stage) => {
-            const isActive = stage.step === activeStep;
-            return (
-              <button
-                key={stage.step}
-                type="button"
-                onClick={() => setActiveStep(stage.step)}
-                className={`p-4 text-left transition-all duration-150 flex flex-col justify-between min-h-[100px] group ${
-                  isActive
-                    ? "bg-[var(--ink)] text-[var(--paper)] shadow-sm"
-                    : "hover:bg-[var(--paper-hover)] text-[var(--ink)]"
-                }`}
-                aria-pressed={isActive}
-              >
-                <div className="flex items-center justify-between w-full font-mono text-xs">
-                  <span
-                    className={
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start relative">
+        {/* Left Sticky Controller (Desktop) */}
+        <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
+          <div className="border border-[var(--line)] bg-[var(--paper)] p-5">
+            <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] border-b border-[var(--line-faint)] pb-3 mb-4">
+              <span>LIFECYCLE MATRIX</span>
+              <span className="text-[var(--accent)] font-semibold">
+                [{LIFECYCLE_STAGES[activeStageIndex].step}/06]
+              </span>
+            </div>
+
+            <div className="space-y-1">
+              {LIFECYCLE_STAGES.map((stage, idx) => {
+                const isActive = idx === activeStageIndex;
+                return (
+                  <button
+                    key={stage.step}
+                    type="button"
+                    onClick={() => scrollToStage(idx)}
+                    className={`w-full text-left px-3 py-2.5 transition-all duration-200 flex items-center justify-between group ${
                       isActive
-                        ? "text-[var(--paper-subtle)] font-bold"
-                        : "text-[var(--accent)] font-semibold"
-                    }
-                  >
-                    {stage.step}
-                  </span>
-                  <span
-                    className={`text-[10px] font-mono uppercase tracking-widest ${
-                      isActive ? "text-[var(--paper-subtle)] opacity-70" : "text-[var(--muted)]"
+                        ? "bg-[var(--ink)] text-[var(--paper)]"
+                        : "hover:bg-[var(--paper-hover)] text-[var(--ink-secondary)]"
                     }`}
                   >
-                    Phase
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={`font-mono text-xs ${
+                          isActive ? "text-[var(--paper)] font-bold" : "text-[var(--accent)]"
+                        }`}
+                      >
+                        {stage.step}
+                      </span>
+                      <span className="font-serif text-sm tracking-tight">
+                        {stage.name}
+                      </span>
+                    </div>
+
+                    <span
+                      className={`text-[10px] font-mono transition-opacity ${
+                        isActive
+                          ? "opacity-100 text-[var(--paper-subtle)]"
+                          : "opacity-0 group-hover:opacity-100 text-[var(--muted)]"
+                      }`}
+                    >
+                      {isActive ? "ACTIVE ●" : "JUMP →"}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-5 pt-3 border-t border-[var(--line-faint)] text-[11px] font-mono text-[var(--muted)] flex items-center justify-between">
+              <span>Scroll to navigate</span>
+              <span className="text-[var(--accent)]">Synced Timeline</span>
+            </div>
+          </div>
+        </aside>
+
+        {/* Right Flowing Stages */}
+        <div className="lg:col-span-8 space-y-6">
+          {LIFECYCLE_STAGES.map((stage, idx) => {
+            const isActive = idx === activeStageIndex;
+            return (
+              <div
+                key={stage.step}
+                ref={(el) => {
+                  stageRefs.current[idx] = el;
+                }}
+                className={`p-6 sm:p-8 border transition-all duration-300 ${
+                  isActive
+                    ? "border-[var(--ink)] bg-[var(--paper-card)] shadow-sm -translate-y-0.5"
+                    : "border-[var(--line-faint)] bg-[var(--paper)] opacity-85 hover:opacity-100"
+                }`}
+              >
+                <div className="flex items-center justify-between border-b border-[var(--line-faint)] pb-3 mb-4">
+                  <div className="flex items-center gap-2 font-mono text-xs">
+                    <span className="text-[var(--accent)] font-bold">{stage.step}</span>
+                    <span className="text-[var(--line)]">/</span>
+                    <span className="uppercase text-[var(--muted)] tracking-wider">Phase</span>
+                  </div>
+
+                  <span className="font-mono text-[11px] text-[var(--muted)]">
+                    {stage.primaryArtifacts}
                   </span>
                 </div>
 
-                <div className="mt-2">
-                  <span className="font-serif text-lg tracking-tight font-medium block">
-                    {stage.name}
+                <h3 className="font-serif text-2xl sm:text-3xl text-[var(--ink)] font-normal mb-2">
+                  {stage.name}
+                </h3>
+
+                <p className="text-sm sm:text-base text-[var(--ink-secondary)] leading-relaxed mb-6 font-normal">
+                  {stage.summary}
+                </p>
+
+                <div className="space-y-2.5 pt-4 border-t border-[var(--line-faint)]">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--muted)] block">
+                    Execution &amp; Core Disciplines
                   </span>
-                  <span
-                    className={`text-[11px] line-clamp-1 block mt-0.5 ${
-                      isActive ? "text-neutral-300" : "text-[var(--muted)]"
-                    }`}
-                  >
-                    {stage.summary.split(",")[0]}
-                  </span>
+                  <ul className="space-y-2">
+                    {stage.details.map((detail, dIdx) => (
+                      <li
+                        key={dIdx}
+                        className="flex items-start gap-2.5 text-xs sm:text-sm text-[var(--ink-secondary)] leading-relaxed"
+                      >
+                        <span className="font-mono text-xs text-[var(--accent)] mt-0.5">•</span>
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </button>
+              </div>
             );
           })}
         </div>
-
-        {/* Selected Stage Detail Panel */}
-        <div className="border-t border-[var(--line)] p-6 sm:p-8 bg-[var(--paper-card)]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
-            {/* Stage Summary */}
-            <div className="lg:col-span-5 flex flex-col gap-3">
-              <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)]">
-                <span>Stage [{currentStage.step} of 06]</span>
-                <span className="h-px w-4 bg-[var(--line)]" />
-                <span className="text-[var(--muted)] uppercase">Engineering Lifecycle</span>
-              </div>
-
-              <h4 className="font-serif text-3xl text-[var(--ink)] font-normal">
-                {currentStage.name}
-              </h4>
-
-              <p className="text-base text-[var(--ink-secondary)] leading-relaxed">
-                {currentStage.summary}
-              </p>
-
-              <div className="mt-2 pt-3 border-t border-[var(--line)]">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-[var(--muted)] block">
-                  Core Outputs & Artifacts
-                </span>
-                <span className="font-mono text-xs text-[var(--accent)] mt-1 block">
-                  {currentStage.primaryArtifacts}
-                </span>
-              </div>
-            </div>
-
-            {/* Stage Execution Details */}
-            <div className="lg:col-span-7 bg-[var(--paper)] p-5 border border-[var(--line)]">
-              <span className="font-mono text-xs uppercase tracking-wider text-[var(--muted)] block mb-3">
-                Methodology & System Execution
-              </span>
-              <ul className="space-y-3">
-                {currentStage.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-sm text-[var(--ink-secondary)] leading-relaxed">
-                    <span className="font-mono text-xs text-[var(--accent)] font-bold mt-0.5">
-                      0{idx + 1}
-                    </span>
-                    <span>{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Footnote context */}
-      <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-[var(--muted)]">
-        <span>From initial product discovery through to production scaling and multi-region reliability.</span>
-        <span className="text-[var(--ink-secondary)]">Click any stage to inspect practices</span>
       </div>
     </div>
   );

@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f3efe7;
+  --paper-subtle: #eae5dc;
+  --paper-card: #f9f7f2;
+  --paper-hover: #ece7de;
+  --ink: #171717;
+  --ink-secondary: #2c2925;
+  --muted: #6d6961;
+  --muted-light: #8e8a82;
+  --line: rgba(23, 23, 23, 0.16);
+  --line-faint: rgba(23, 23, 23, 0.08);
+  --line-strong: rgba(23, 23, 23, 0.32);
+  --accent: #1d5d49;
+  --accent-hover: #154536;
+  --accent-subtle: rgba(29, 93, 73, 0.08);
+  --accent-border: rgba(29, 93, 73, 0.28);
+}
+
+@theme {
+  --color-paper: var(--paper);
+  --color-paper-subtle: var(--paper-subtle);
+  --color-paper-card: var(--paper-card);
+  --color-paper-hover: var(--paper-hover);
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
+  --color-line: var(--line);
+  --color-line-faint: var(--line-faint);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-border: var(--accent-border);
+
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Restrained selection styling */
+::selection {
+  background-color: #1d5d49;
+  color: #f3efe7;
+}
+
+/* Subtle focus indicators for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Custom editorial border utility */
+.border-editorial {
+  border-color: var(--line);
+}
+
+.border-editorial-strong {
+  border-color: var(--line-strong);
+}
+
+.border-editorial-faint {
+  border-color: var(--line-faint);
+}
+
+/* Monospace metadata styling */
+.font-mono-meta {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" on, "zero" on;
+}

@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Hero } from "@/components/Hero";
 import { SectionLabel } from "@/components/SectionLabel";
 import { WorkItem } from "@/components/WorkItem";
 import { Lifecycle } from "@/components/Lifecycle";
@@ -34,63 +35,10 @@ export default function Home() {
 
       <Header />
 
-      <main className="flex-1 w-full max-w-[1240px] mx-auto px-6 sm:px-8 py-12 sm:py-20 space-y-28 sm:space-y-36">
+      <main className="flex-1 w-full max-w-[1240px] mx-auto px-6 sm:px-8 space-y-28 sm:space-y-36">
         {/* HERO SECTION */}
-        <section aria-labelledby="hero-title" className="pt-6 sm:pt-12">
-          <ScrollReveal>
-            <div className="max-w-4xl">
-              {/* Quiet, clean editorial indicator instead of clunky slash row */}
-              <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] mb-5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
-                <span className="tracking-wider uppercase font-medium">Senior Software Engineer · Manchester, UK</span>
-              </div>
-
-              {/* Main headline */}
-              <h1
-                id="hero-title"
-                className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-[var(--ink)] leading-[1.08] text-balance"
-              >
-                Building serious systems, quietly.
-              </h1>
-
-              {/* Primary intro copy */}
-              <div className="mt-6 sm:mt-8 space-y-4 max-w-2xl">
-                <p className="text-lg sm:text-xl text-[var(--ink-secondary)] leading-relaxed font-normal">
-                  I’m Emmanuel Biolatiri, a senior software engineer building payment, platform and wallet infrastructure. I work across backend architecture, distributed systems and production operations.
-                </p>
-                <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-                  I design and operate systems where data integrity, low latency, and zero-downtime reliability are non-negotiable. Currently engineering{" "}
-                  <a
-                    href="https://walletkit.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[var(--accent)] underline underline-offset-4 hover:text-[var(--accent-hover)] font-medium"
-                  >
-                    walletKit
-                  </a>{" "}
-                  and writing about systems architecture, identity, and commercial software.
-                </p>
-              </div>
-
-              {/* CTAs */}
-              <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4">
-                <a
-                  href="#work"
-                  className="px-6 py-3 border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] hover:bg-[var(--accent)] hover:border-[var(--accent)] text-xs font-mono tracking-wider transition-all duration-150 inline-flex items-center gap-2 shadow-sm"
-                >
-                  <span>View selected work</span>
-                  <span>↓</span>
-                </a>
-                <a
-                  href="#writing"
-                  className="px-6 py-3 border border-[var(--line)] bg-[var(--paper)] text-[var(--ink)] hover:border-[var(--ink)] text-xs font-mono tracking-wider transition-all duration-150 inline-flex items-center gap-2"
-                >
-                  <span>Read my writing</span>
-                  <span>→</span>
-                </a>
-              </div>
-            </div>
-          </ScrollReveal>
+        <section aria-label="Introduction">
+          <Hero />
         </section>
 
         {/* 1. SELECTED WORK */}
@@ -331,7 +279,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row md:flex-col gap-3">
                 <a
                   href="mailto:hello@manuelbiolatiri.me"
-                  className="px-6 py-3 border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] hover:bg-[var(--accent)] hover:border-[var(--accent)] text-xs font-mono text-center tracking-wider transition-all duration-150 shadow-sm"
+                  className="px-6 py-3 border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] hover:bg-[var(--accent)] hover:border-[var(--accent)] text-xs font-mono text-center tracking-widest uppercase transition-all duration-150 shadow-sm"
                 >
                   hello@manuelbiolatiri.me
                 </a>

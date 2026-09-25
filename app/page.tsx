@@ -35,7 +35,7 @@ export default function Home() {
 
       <Header />
 
-      <main className="flex-1 w-full max-w-[1240px] mx-auto px-6 sm:px-8 space-y-28 sm:space-y-36">
+      <main className="flex-1 w-full max-w-[1240px] mx-auto px-5 sm:px-8 space-y-16 sm:space-y-28 lg:space-y-36">
         {/* HERO SECTION */}
         <section aria-label="Introduction">
           <Hero />

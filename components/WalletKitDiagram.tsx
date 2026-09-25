@@ -52,31 +52,31 @@ export function WalletKitDiagram() {
   return (
     <div className="w-full border border-[var(--line-faint)] bg-[var(--paper)]">
       {/* Origin story banner */}
-      <div className="p-6 sm:p-10 border-b border-[var(--line-faint)] bg-[var(--paper-card)]">
+      <div className="p-5 sm:p-8 sm:p-10 border-b border-[var(--line-faint)] bg-[var(--paper-card)]">
         <div className="max-w-3xl">
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center gap-2 mb-2.5">
             <span className="w-1.5 h-1.5 bg-[var(--accent)]" />
             <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-semibold">
               Origin &amp; Systems Motivation
             </span>
           </div>
-          <p className="font-serif text-xl sm:text-2xl text-[var(--ink)] leading-snug italic font-normal">
+          <p className="font-serif text-lg sm:text-2xl text-[var(--ink)] leading-snug italic font-normal">
             &ldquo;It started with what looked like a small ‘Add to Wallet’ feature. The deeper I looked, the more the interesting problem became issuance, updates, validation, distribution and lifecycle management.&rdquo;
           </p>
-          <p className="mt-3 text-xs text-[var(--muted)] font-mono">
+          <p className="mt-2.5 text-xs text-[var(--muted)] font-mono">
             — Emmanuel Biolatiri, Founder &amp; Architect of walletKit
           </p>
         </div>
       </div>
 
       {/* Visual Architectural System Flow with Dynamic Signals */}
-      <div className="p-6 sm:p-10 border-b border-[var(--line-faint)]">
-        <div className="flex items-center justify-between mb-8">
+      <div className="p-4 sm:p-8 sm:p-10 border-b border-[var(--line-faint)]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 sm:mb-8">
           <div>
-            <span className="font-mono text-xs uppercase tracking-wider text-[var(--muted)]">
+            <span className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[var(--muted)]">
               Architecture Schematic
             </span>
-            <h4 className="font-mono text-sm sm:text-base font-medium text-[var(--ink)] mt-1">
+            <h4 className="font-mono text-xs sm:text-base font-medium text-[var(--ink)] mt-0.5">
               End-to-End Cryptographic Pass Pipeline
             </h4>
           </div>
@@ -87,16 +87,16 @@ export function WalletKitDiagram() {
         </div>
 
         {/* Dynamic Nodes with 3D Tilt */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-3.5 sm:gap-4 relative">
           {/* Node 1: Organisation */}
           <TiltContainer maxTilt={2.5}>
-            <div className="h-full border border-[var(--line-faint)] bg-[var(--paper-card)] p-5 flex flex-col justify-between hover:border-[var(--line-strong)] transition-colors">
+            <div className="h-full border border-[var(--line-faint)] bg-[var(--paper-card)] p-4 sm:p-5 flex flex-col justify-between hover:border-[var(--line-strong)] transition-colors">
               <div>
-                <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] mb-3">
+                <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] mb-2.5">
                   <span>01</span>
                   <span>ORIGIN</span>
                 </div>
-                <h5 className="font-serif text-lg text-[var(--ink)] font-normal">
+                <h5 className="font-serif text-base sm:text-lg text-[var(--ink)] font-normal">
                   Organisation
                 </h5>
                 <p className="text-xs text-[var(--muted)] mt-1 leading-relaxed">
@@ -111,16 +111,16 @@ export function WalletKitDiagram() {
 
           {/* Node 2: walletKit Core */}
           <TiltContainer maxTilt={3}>
-            <div className="h-full border-2 border-[var(--accent)] bg-[var(--accent-subtle)] p-5 flex flex-col justify-between relative shadow-sm">
+            <div className="h-full border-2 border-[var(--accent)] bg-[var(--accent-subtle)] p-4 sm:p-5 flex flex-col justify-between relative shadow-sm">
               <div className="absolute -top-3 right-3 px-2 py-0.5 bg-[var(--accent)] text-[var(--paper)] font-mono text-[10px] uppercase tracking-wider font-semibold">
                 Engine
               </div>
               <div>
-                <div className="flex items-center justify-between text-xs font-mono text-[var(--accent)] mb-3">
+                <div className="flex items-center justify-between text-xs font-mono text-[var(--accent)] mb-2.5">
                   <span>02</span>
                   <span className="font-bold">SYSTEM</span>
                 </div>
-                <h5 className="font-serif text-lg text-[var(--ink)] font-bold">
+                <h5 className="font-serif text-base sm:text-lg text-[var(--ink)] font-bold">
                   walletKit
                 </h5>
                 <p className="text-xs text-[var(--ink-secondary)] mt-1 leading-relaxed">
@@ -135,13 +135,13 @@ export function WalletKitDiagram() {
 
           {/* Node 3: Apple / Google Wallet */}
           <TiltContainer maxTilt={2.5}>
-            <div className="h-full border border-[var(--line-faint)] bg-[var(--paper-card)] p-5 flex flex-col justify-between hover:border-[var(--line-strong)] transition-colors">
+            <div className="h-full border border-[var(--line-faint)] bg-[var(--paper-card)] p-4 sm:p-5 flex flex-col justify-between hover:border-[var(--line-strong)] transition-colors">
               <div>
-                <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] mb-3">
+                <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] mb-2.5">
                   <span>03</span>
                   <span>WALLET OS</span>
                 </div>
-                <h5 className="font-serif text-lg text-[var(--ink)] font-normal">
+                <h5 className="font-serif text-base sm:text-lg text-[var(--ink)] font-normal">
                   Apple &amp; Google
                 </h5>
                 <p className="text-xs text-[var(--muted)] mt-1 leading-relaxed">
@@ -156,13 +156,13 @@ export function WalletKitDiagram() {
 
           {/* Node 4: Member Device */}
           <TiltContainer maxTilt={2.5}>
-            <div className="h-full border border-[var(--line-faint)] bg-[var(--paper-card)] p-5 flex flex-col justify-between hover:border-[var(--line-strong)] transition-colors">
+            <div className="h-full border border-[var(--line-faint)] bg-[var(--paper-card)] p-4 sm:p-5 flex flex-col justify-between hover:border-[var(--line-strong)] transition-colors">
               <div>
-                <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] mb-3">
+                <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] mb-2.5">
                   <span>04</span>
                   <span>TERMINAL</span>
                 </div>
-                <h5 className="font-serif text-lg text-[var(--ink)] font-normal">
+                <h5 className="font-serif text-base sm:text-lg text-[var(--ink)] font-normal">
                   Member Device
                 </h5>
                 <p className="text-xs text-[var(--muted)] mt-1 leading-relaxed">
@@ -177,34 +177,34 @@ export function WalletKitDiagram() {
         </div>
 
         {/* Dynamic Architectural Data Flow Pipeline */}
-        <div className="mt-8 pt-6 border-t border-[var(--line-faint)] flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-[var(--muted)]">
-          <div className="flex items-center gap-2">
+        <div className="mt-6 pt-5 border-t border-[var(--line-faint)] flex flex-wrap items-center justify-between gap-3 font-mono text-[11px] sm:text-xs text-[var(--muted)]">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <span className="text-[var(--ink)] font-medium">Pipeline:</span>
             <span className="text-[var(--accent)]">REST Hook</span>
-            <span>──→</span>
-            <span className="text-[var(--accent)]">PKCS#7 Sign</span>
-            <span>──→</span>
-            <span className="text-[var(--accent)]">APNs Sync</span>
-            <span>──→</span>
-            <span className="text-[var(--accent)]">Dynamic Token</span>
+            <span>→</span>
+            <span className="text-[var(--accent)]">PKCS#7</span>
+            <span>→</span>
+            <span className="text-[var(--accent)]">Push</span>
+            <span>→</span>
+            <span className="text-[var(--accent)]">Token Sync</span>
           </div>
 
-          <span className="text-[11px] text-[var(--muted)]">Hover cards for 3D perspective</span>
+          <span className="hidden sm:inline text-[11px] text-[var(--muted)]">Hover cards for 3D perspective</span>
         </div>
       </div>
 
       {/* 4 Capabilities Grid */}
-      <div className="p-6 sm:p-10">
-        <div className="flex items-center justify-between mb-6">
-          <span className="font-mono text-xs uppercase tracking-wider text-[var(--muted)]">
+      <div className="p-4 sm:p-8 sm:p-10">
+        <div className="flex items-center justify-between mb-4 sm:mb-6">
+          <span className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[var(--muted)]">
             Capabilities Matrix
           </span>
-          <span className="font-mono text-xs text-[var(--accent)]">
-            Click to inspect subsystem specs
+          <span className="font-mono text-[10px] sm:text-xs text-[var(--accent)]">
+            Select to inspect specs
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {pillars.map((pillar, i) => {
             const isSelected = selectedPillar === i;
             return (
@@ -212,18 +212,18 @@ export function WalletKitDiagram() {
                 key={pillar.name}
                 type="button"
                 onClick={() => setSelectedPillar(i)}
-                className={`p-5 text-left border transition-all duration-150 flex flex-col justify-between min-h-[210px] ${
+                className={`p-4 sm:p-5 text-left border transition-all duration-150 flex flex-col justify-between min-h-[170px] sm:min-h-[210px] ${
                   isSelected
                     ? "border-[var(--accent)] bg-[var(--paper-card)] shadow-sm -translate-y-0.5"
                     : "border-[var(--line-faint)] bg-[var(--paper)] hover:bg-[var(--paper-hover)]"
                 }`}
               >
                 <div>
-                  <div className="flex items-center justify-between font-mono text-xs mb-3">
+                  <div className="flex items-center justify-between font-mono text-xs mb-2 sm:mb-3">
                     <span className="text-[var(--accent)] font-bold">{pillar.num}</span>
                     <span className="uppercase text-[10px] text-[var(--muted)] tracking-wider">Subsystem</span>
                   </div>
-                  <h5 className="font-serif text-xl font-normal text-[var(--ink)] mb-2">
+                  <h5 className="font-serif text-lg sm:text-xl font-normal text-[var(--ink)] mb-1 sm:mb-2">
                     {pillar.name}
                   </h5>
                   <p className="text-xs text-[var(--ink-secondary)] leading-relaxed">
@@ -231,7 +231,7 @@ export function WalletKitDiagram() {
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-[var(--line-faint)]">
+                <div className="mt-3 pt-2.5 border-t border-[var(--line-faint)]">
                   <span className="font-mono text-[10px] uppercase text-[var(--accent)] font-medium">
                     {isSelected ? "● Viewing Specs" : "○ Select"}
                   </span>
@@ -242,16 +242,16 @@ export function WalletKitDiagram() {
         </div>
 
         {/* Selected Pillar Specifications */}
-        <div className="mt-4 p-5 border border-[var(--line-faint)] bg-[var(--paper-card)]">
-          <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] mb-3">
+        <div className="mt-3 sm:mt-4 p-4 sm:p-5 border border-[var(--line-faint)] bg-[var(--paper-card)]">
+          <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] mb-2.5 sm:mb-3">
             <span>Subsystem Specifications:</span>
             <span className="font-semibold text-[var(--ink)]">{pillars[selectedPillar].name} Infrastructure</span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
             {pillars[selectedPillar].specs.map((spec, idx) => (
               <div
                 key={idx}
-                className="p-3 border border-[var(--line-faint)] bg-[var(--paper)] text-xs text-[var(--ink-secondary)] font-mono leading-relaxed"
+                className="p-2.5 sm:p-3 border border-[var(--line-faint)] bg-[var(--paper)] text-xs text-[var(--ink-secondary)] font-mono leading-relaxed"
               >
                 <span className="text-[var(--accent)] font-bold mr-1.5">[{idx + 1}]</span>
                 {spec}
@@ -261,7 +261,7 @@ export function WalletKitDiagram() {
         </div>
 
         {/* External Link CTA */}
-        <div className="mt-8 pt-6 border-t border-[var(--line-faint)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-[var(--line-faint)] flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
           <div className="text-xs font-mono text-[var(--muted)]">
             Production API contracts, pass builders, and webhook telemetry.
           </div>

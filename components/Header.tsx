@@ -15,19 +15,19 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[var(--paper)]/95 backdrop-blur-md border-b border-[var(--line-faint)] transition-all">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
-        {/* Standalone Dark Monogram Logo - No text around it */}
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-8 h-14 sm:h-16 flex items-center justify-between">
+        {/* Standalone Dark Monogram Logo */}
         <Link
           href="/"
           className="group focus:outline-none"
           aria-label="Emmanuel Biolatiri Home"
         >
-          <div className="w-9 h-9 bg-[var(--ink)] text-[var(--paper)] flex items-center justify-center font-mono text-xs font-bold tracking-wider shadow-sm transition-transform duration-200 group-hover:scale-105">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 bg-[var(--ink)] text-[var(--paper)] flex items-center justify-center font-mono text-xs font-bold tracking-wider shadow-sm transition-transform duration-200 group-hover:scale-105">
             EB
           </div>
         </Link>
 
-        {/* Center/Desktop Navigation (Like ademola.adegbuyi.me) */}
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
           {navLinks.map((link) => (
             <a
@@ -41,7 +41,7 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Right Contact Pill (Like ademola.adegbuyi.me) */}
+        {/* Right Contact Pill (Desktop) */}
         <div className="hidden md:flex items-center">
           <a
             href="mailto:hello@manuelbiolatiri.me"
@@ -51,62 +51,43 @@ export function Header() {
           </a>
         </div>
 
-        {/* Mobile menu button */}
-        <div className="md:hidden flex items-center gap-3">
-          <a
-            href="mailto:hello@manuelbiolatiri.me"
-            className="text-xs font-mono px-3 py-1.5 rounded-full border border-[var(--ink)] text-[var(--ink)]"
-          >
-            Contact
-          </a>
+        {/* Mobile menu button: Clean, single trigger */}
+        <div className="md:hidden flex items-center">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-[var(--ink)] focus:outline-none border border-[var(--line-faint)]"
+            className="px-3 py-1.5 text-xs font-mono uppercase tracking-wider text-[var(--ink)] border border-[var(--line)] bg-[var(--paper-card)] flex items-center gap-2"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
           >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {mobileMenuOpen ? (
-                <path
-                  strokeLinecap="square"
-                  strokeLinejoin="miter"
-                  strokeWidth="1.5"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="square"
-                  strokeLinejoin="miter"
-                  strokeWidth="1.5"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
+            <span>{mobileMenuOpen ? "Close" : "Menu"}</span>
+            <span className="text-[10px] text-[var(--muted)]">{mobileMenuOpen ? "✕" : "☰"}</span>
           </button>
         </div>
       </div>
 
       {/* Mobile dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-[var(--line-faint)] bg-[var(--paper)] px-6 py-4">
-          <nav className="flex flex-col gap-3 font-mono text-xs uppercase tracking-wider" aria-label="Mobile Navigation">
+        <div className="md:hidden border-b border-[var(--line-faint)] bg-[var(--paper-card)] px-5 py-5 shadow-sm">
+          <nav className="flex flex-col gap-4 font-mono text-xs uppercase tracking-wider" aria-label="Mobile Navigation">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-1.5 text-[var(--ink)] hover:text-[var(--accent)] flex items-center justify-between"
+                className="py-1 text-[var(--ink)] hover:text-[var(--accent)] flex items-center justify-between border-b border-[var(--line-faint)] pb-2"
               >
                 <span>{link.label}</span>
                 <span className="text-xs text-[var(--muted)]">→</span>
               </a>
             ))}
+            <a
+              href="mailto:hello@manuelbiolatiri.me"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mt-2 py-2.5 px-4 text-center border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] text-xs font-mono tracking-widest uppercase"
+            >
+              Contact (hello@manuelbiolatiri.me)
+            </a>
           </nav>
         </div>
       )}

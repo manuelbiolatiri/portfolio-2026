@@ -39,8 +39,8 @@ export function Lifecycle() {
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start relative">
-        {/* Left Sticky Controller (Desktop) */}
-        <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
+        {/* Left Sticky Controller (Desktop Only) */}
+        <aside className="hidden lg:block lg:col-span-4 lg:sticky lg:top-24 space-y-6">
           <div className="border border-[var(--line)] bg-[var(--paper)] p-5">
             <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] border-b border-[var(--line-faint)] pb-3 mb-4">
               <span>LIFECYCLE MATRIX</span>
@@ -97,8 +97,8 @@ export function Lifecycle() {
           </div>
         </aside>
 
-        {/* Right Flowing Stages */}
-        <div className="lg:col-span-8 space-y-6">
+        {/* Right Flowing Stages (Full width on mobile) */}
+        <div className="lg:col-span-8 space-y-5 sm:space-y-6">
           {LIFECYCLE_STAGES.map((stage, idx) => {
             const isActive = idx === activeStageIndex;
             return (
@@ -107,13 +107,13 @@ export function Lifecycle() {
                 ref={(el) => {
                   stageRefs.current[idx] = el;
                 }}
-                className={`p-6 sm:p-8 border transition-all duration-300 ${
+                className={`p-5 sm:p-8 border transition-all duration-300 ${
                   isActive
-                    ? "border-[var(--ink)] bg-[var(--paper-card)] shadow-sm -translate-y-0.5"
-                    : "border-[var(--line-faint)] bg-[var(--paper)] opacity-85 hover:opacity-100"
+                    ? "border-[var(--ink)] bg-[var(--paper-card)] shadow-sm sm:-translate-y-0.5"
+                    : "border-[var(--line-faint)] bg-[var(--paper)] opacity-90 sm:opacity-85 hover:opacity-100"
                 }`}
               >
-                <div className="flex items-center justify-between border-b border-[var(--line-faint)] pb-3 mb-4">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--line-faint)] pb-3 mb-4">
                   <div className="flex items-center gap-2 font-mono text-xs">
                     <span className="text-[var(--accent)] font-bold">{stage.step}</span>
                     <span className="text-[var(--line)]">/</span>
@@ -129,11 +129,11 @@ export function Lifecycle() {
                   {stage.name}
                 </h3>
 
-                <p className="text-sm sm:text-base text-[var(--ink-secondary)] leading-relaxed mb-6 font-normal">
+                <p className="text-sm sm:text-base text-[var(--ink-secondary)] leading-relaxed mb-5 font-normal">
                   {stage.summary}
                 </p>
 
-                <div className="space-y-2.5 pt-4 border-t border-[var(--line-faint)]">
+                <div className="space-y-2 pt-3 border-t border-[var(--line-faint)]">
                   <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--muted)] block">
                     Execution &amp; Core Disciplines
                   </span>

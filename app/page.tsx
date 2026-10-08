@@ -217,7 +217,7 @@ export default function Home() {
                   Let’s talk architecture, payments, or walletKit.
                 </h2>
                 <p className="text-sm sm:text-base text-[var(--ink-secondary)] leading-relaxed">
-                  Whether discussing distributed payment systems, mobile wallet infrastructure, or engineering leadership — I welcome thoughtful technical conversations.
+                  Whether discussing distributed payment systems, mobile wallet infrastructure, or engineering leadership, I welcome thoughtful technical conversations.
                 </p>
               </div>
 

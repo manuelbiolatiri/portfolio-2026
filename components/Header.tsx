@@ -44,7 +44,7 @@ export function Header() {
         {/* Right Contact Pill (Desktop) */}
         <div className="hidden md:flex items-center">
           <a
-            href="mailto:hello@manuelbiolatiri.me"
+            href="mailto:manuelbiolatiri@gmail.com"
             className="text-xs font-mono uppercase tracking-widest px-5 py-2 rounded-full border border-[var(--ink)] text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)] transition-all duration-200 shadow-sm"
           >
             Contact
@@ -75,18 +75,17 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-1 text-[var(--ink)] hover:text-[var(--accent)] flex items-center justify-between border-b border-[var(--line-faint)] pb-2"
+                className="py-2 text-[var(--ink)] hover:text-[var(--accent)] flex items-center justify-between border-b border-[var(--line-faint)]"
               >
                 <span>{link.label}</span>
-                <span className="text-xs text-[var(--muted)]">→</span>
               </a>
             ))}
             <a
-              href="mailto:hello@manuelbiolatiri.me"
+              href="mailto:manuelbiolatiri@gmail.com"
               onClick={() => setMobileMenuOpen(false)}
-              className="mt-2 py-2.5 px-4 text-center border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] text-xs font-mono tracking-widest uppercase"
+              className="mt-4 py-3 px-4 text-center border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] text-xs font-mono tracking-widest uppercase rounded-sm"
             >
-              Contact (hello@manuelbiolatiri.me)
+              Contact
             </a>
           </nav>
         </div>

@@ -6,7 +6,7 @@ interface ResearchCardProps {
 
 export function ResearchCard({ publication }: ResearchCardProps) {
   const CardContent = (
-    <div className="flex flex-col md:flex-row h-full">
+    <div className="flex flex-col-reverse md:flex-row h-full">
       <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
         <div>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--line-faint)] pb-4 mb-5">

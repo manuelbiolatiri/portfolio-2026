@@ -7,7 +7,7 @@ interface WritingCardProps {
 
 export function WritingCard({ article }: WritingCardProps) {
   const CardContent = (
-    <div className="flex flex-col md:flex-row h-full">
+    <div className="flex flex-col-reverse md:flex-row h-full">
       <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] mb-5">

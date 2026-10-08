@@ -12,20 +12,15 @@ export function Hero() {
   const narrativeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // 1. GSAP Animation Timeline
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.fromTo(
         firstNameRef.current,
-        { y: 60, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.0 }
+        { scale: 1.4, opacity: 0, filter: "blur(30px)" },
+        { scale: 1, opacity: 1, filter: "blur(0px)", duration: 1.6, ease: "power4.out" }
       )
-        .fromTo(
-          lastNameRef.current,
-          { y: 60, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1.0 },
-          "-=0.75"
-        )
         .fromTo(
           sublineRef.current,
           { opacity: 0, x: -20 },
@@ -46,7 +41,9 @@ export function Hero() {
         );
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+    };
   }, []);
 
   return (

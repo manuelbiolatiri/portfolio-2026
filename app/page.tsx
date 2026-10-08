@@ -59,7 +59,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="font-mono text-xs text-[var(--muted)]">
-                Production Work · 2020 — Present
+                Work · 2020 — Present
               </div>
             </div>
           </ScrollReveal>
@@ -90,9 +90,6 @@ export default function Home() {
                   I approach software engineering as an end-to-end discipline. Rather than focusing solely on implementation details, I prioritize deep domain understanding, resilient system architecture, and long-term operational excellence to deliver true business value.
                 </p>
               </div>
-              <div className="font-mono text-xs text-[var(--accent)] font-semibold">
-                Scroll-Synced Matrix
-              </div>
             </div>
           </ScrollReveal>
 
@@ -102,7 +99,7 @@ export default function Home() {
         {/* 3. WALLETKIT FEATURED SECTION */}
         <section id="walletkit" aria-labelledby="walletkit-title">
           <ScrollReveal>
-            <SectionLabel number="03" label="Featured System Infrastructure" className="mb-6" />
+            <SectionLabel number="03" label="Featured Projects" className="mb-6" />
 
             <div className="mb-8 pb-5 border-b border-[var(--line-faint)] flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>

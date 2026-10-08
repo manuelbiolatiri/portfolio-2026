@@ -57,17 +57,15 @@ export function Lifecycle() {
                     key={stage.step}
                     type="button"
                     onClick={() => scrollToStage(idx)}
-                    className={`w-full text-left px-3 py-2.5 transition-all duration-200 flex items-center justify-between group ${
-                      isActive
+                    className={`w-full text-left px-3 py-2.5 transition-all duration-200 flex items-center justify-between group ${isActive
                         ? "bg-[var(--ink)] text-[var(--paper)]"
                         : "hover:bg-[var(--paper-hover)] text-[var(--ink-secondary)]"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3">
                       <span
-                        className={`font-mono text-xs ${
-                          isActive ? "text-[var(--paper)] font-bold" : "text-[var(--accent)]"
-                        }`}
+                        className={`font-mono text-xs ${isActive ? "text-[var(--paper)] font-bold" : "text-[var(--accent)]"
+                          }`}
                       >
                         {stage.step}
                       </span>
@@ -77,22 +75,16 @@ export function Lifecycle() {
                     </div>
 
                     <span
-                      className={`text-[10px] font-mono transition-opacity ${
-                        isActive
+                      className={`text-[10px] font-mono transition-opacity ${isActive
                           ? "opacity-100 text-[var(--paper-subtle)]"
                           : "opacity-0 group-hover:opacity-100 text-[var(--muted)]"
-                      }`}
+                        }`}
                     >
                       {isActive ? "ACTIVE ●" : "JUMP →"}
                     </span>
                   </button>
                 );
               })}
-            </div>
-
-            <div className="mt-5 pt-3 border-t border-[var(--line-faint)] text-[11px] font-mono text-[var(--muted)] flex items-center justify-between">
-              <span>Scroll to navigate</span>
-              <span className="text-[var(--accent)]">Synced Timeline</span>
             </div>
           </div>
         </aside>
@@ -107,11 +99,10 @@ export function Lifecycle() {
                 ref={(el) => {
                   stageRefs.current[idx] = el;
                 }}
-                className={`flex-none w-[85vw] sm:w-[400px] lg:w-auto snap-center p-6 sm:p-8 border transition-all duration-300 ${
-                  isActive
+                className={`flex-none w-[85vw] sm:w-[400px] lg:w-auto snap-center p-6 sm:p-8 border transition-all duration-300 ${isActive
                     ? "border-[var(--ink)] bg-[var(--paper-card)] shadow-sm lg:-translate-y-0.5"
                     : "border-[var(--line-faint)] bg-[var(--paper)] opacity-90 sm:opacity-85 hover:opacity-100"
-                }`}
+                  }`}
               >
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--line-faint)] pb-3 mb-4">
                   <div className="flex items-center gap-2 font-mono text-xs">

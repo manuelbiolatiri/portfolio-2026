@@ -108,10 +108,7 @@ export default function Home() {
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="font-mono text-xs uppercase px-2 py-0.5 bg-[var(--accent)] text-[var(--paper)]">
-                    Founder &amp; Architect
-                  </span>
-                  <span className="font-mono text-xs text-[var(--muted)]">
-                    Active Production System
+                    Creator
                   </span>
                 </div>
                 <h2
@@ -121,7 +118,7 @@ export default function Home() {
                   walletKit
                 </h2>
                 <p className="text-base sm:text-lg text-[var(--ink-secondary)] mt-1.5 max-w-2xl">
-                  Wallet infrastructure for membership, events and entitlement.
+                  Pass infrastructure for membership, events, entitlement, and MCP.
                 </p>
               </div>
 

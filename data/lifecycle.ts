@@ -9,68 +9,46 @@ export interface LifecycleStage {
 export const LIFECYCLE_STAGES: LifecycleStage[] = [
   {
     step: "01",
-    name: "Explore",
-    summary: "Product investigation, system requirements, Figma prototyping",
+    name: "Product & Domain Ownership",
+    summary: "Driving end-to-end delivery from ambiguous requirements to production",
     details: [
-      "Translating ambiguous domain problems into clear technical constraints",
-      "Interactive Figma wireframing to test UX assumptions before writing schemas",
-      "Threat modelling, dependency mapping, and regulatory boundaries"
+      "Translating ambiguous domain problems into clear technical constraints and system boundaries.",
+      "Partnering across disciplines to validate user experience assumptions before technical commitment.",
+      "Balancing long-term architectural health with rapid, iterative feature velocity."
     ],
-    primaryArtifacts: "Requirements Specs · Wireframes · Domain Models"
+    primaryArtifacts: "Domain Models · Requirement Specs · User Flows"
   },
   {
     step: "02",
-    name: "Design",
-    summary: "Architecture, API contracts, database modelling, payment flows",
+    name: "System Architecture",
+    summary: "Designing resilient distributed systems and robust data models",
     details: [
-      "Relational schema modelling and state machine transition guarantees",
-      "OpenAPI specifications, webhook contracts, and idempotency keys",
-      "Decoupled asynchronous event architectures and transaction boundaries"
+      "Designing relational database schemas, state machine transitions, and data integrity guarantees.",
+      "Establishing strict API contracts, webhook architectures, and distributed idempotency.",
+      "Building decoupled, event-driven services that isolate failure domains."
     ],
-    primaryArtifacts: "State Machine Graphs · Schema DDLs · API Contracts"
+    primaryArtifacts: "Architecture Graphs · Schema DDLs · API Contracts"
   },
   {
     step: "03",
-    name: "Build",
-    summary: "TypeScript, Node.js, Django, distributed services",
+    name: "Infrastructure & Scale",
+    summary: "Building and operating highly available, performant cloud environments",
     details: [
-      "Strictly typed backend systems with domain-driven modular boundaries",
-      "Resilient background workers, queue consumers, and retry strategies",
-      "High-throughput cryptographic signing and signature verification engines"
+      "Designing scalable deployment topologies optimized for low latency and high availability.",
+      "Implementing zero-downtime rolling releases and backwards-compatible database migrations.",
+      "Scaling read-heavy workloads with replication, connection pooling, and optimized indexing."
     ],
-    primaryArtifacts: "Type-Safe Services · Test Suites · Worker Queues"
+    primaryArtifacts: "Deployment Topologies · Migration Plans · Benchmarks"
   },
   {
     step: "04",
-    name: "Ship",
-    summary: "Docker, CI/CD, AWS",
+    name: "Security & Observability",
+    summary: "Ensuring cryptographic integrity, compliance, and deep system visibility",
     details: [
-      "Multi-stage Docker images optimized for minimal attack surface and fast caching",
-      "Automated GitHub Actions CI/CD pipelines with lint, typecheck, and migration runs",
-      "Infrastructure orchestration on AWS (ECS, RDS, S3, CloudWatch, VPC routing)"
+      "Implementing threat modeling, strict data isolation, and secure cross-service communication.",
+      "Instrumenting structured application logging, telemetry dashboards, and proactive alert thresholds.",
+      "Automating anomaly detection, dead letter queue analysis, and recovery runbooks."
     ],
-    primaryArtifacts: "Docker Images · CI/CD Pipelines · Cloud Formations"
-  },
-  {
-    step: "05",
-    name: "Operate",
-    summary: "Monitoring, queues, incident response, production releases",
-    details: [
-      "Structured JSON application logging, metric dashboards, and threshold alerts",
-      "Dead letter queue analysis, automated worker backoff, and recovery runbooks",
-      "Zero-downtime rolling deployments and safe database schema migrations"
-    ],
-    primaryArtifacts: "Alert Monitors · Operational Runbooks · Audit Trails"
-  },
-  {
-    step: "06",
-    name: "Scale",
-    summary: "Multi-region payments, migrations, commercial infrastructure",
-    details: [
-      "Multi-currency payment routing and distributed ledger reconciliation",
-      "Read replicas, index optimization, and connection pooling under peak load",
-      "Long-term architecture evolution balancing reliability with developer velocity"
-    ],
-    primaryArtifacts: "Replication Topologies · Migration Plans · Benchmarks"
+    primaryArtifacts: "Audit Trails · Alert Monitors · Cryptographic Keys"
   }
 ];

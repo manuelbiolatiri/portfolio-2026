@@ -45,7 +45,7 @@ export function Lifecycle() {
             <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] border-b border-[var(--line-faint)] pb-3 mb-4">
               <span>LIFECYCLE MATRIX</span>
               <span className="text-[var(--accent)] font-semibold">
-                [{LIFECYCLE_STAGES[activeStageIndex].step}/06]
+                [{LIFECYCLE_STAGES[activeStageIndex].step}/0{LIFECYCLE_STAGES.length}]
               </span>
             </div>
 
@@ -97,8 +97,8 @@ export function Lifecycle() {
           </div>
         </aside>
 
-        {/* Right Flowing Stages (Full width on mobile) */}
-        <div className="lg:col-span-8 space-y-5 sm:space-y-6">
+        {/* Right Flowing Stages (Horizontal Snap on Mobile) */}
+        <div className="lg:col-span-8 flex lg:block overflow-x-auto snap-x snap-mandatory lg:overflow-visible gap-5 lg:gap-0 lg:space-y-6 pb-6 lg:pb-0 -mx-5 px-5 lg:mx-0 lg:px-0 no-scrollbar">
           {LIFECYCLE_STAGES.map((stage, idx) => {
             const isActive = idx === activeStageIndex;
             return (
@@ -107,9 +107,9 @@ export function Lifecycle() {
                 ref={(el) => {
                   stageRefs.current[idx] = el;
                 }}
-                className={`p-5 sm:p-8 border transition-all duration-300 ${
+                className={`flex-none w-[85vw] sm:w-[400px] lg:w-auto snap-center p-6 sm:p-8 border transition-all duration-300 ${
                   isActive
-                    ? "border-[var(--ink)] bg-[var(--paper-card)] shadow-sm sm:-translate-y-0.5"
+                    ? "border-[var(--ink)] bg-[var(--paper-card)] shadow-sm lg:-translate-y-0.5"
                     : "border-[var(--line-faint)] bg-[var(--paper)] opacity-90 sm:opacity-85 hover:opacity-100"
                 }`}
               >

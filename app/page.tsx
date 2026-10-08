@@ -84,10 +84,10 @@ export default function Home() {
                   id="lifecycle-title"
                   className="font-serif text-3xl sm:text-4xl text-[var(--ink)] font-normal"
                 >
-                  Explore → Design → Build → Ship → Operate → Scale
+                  Core Engineering Pillars
                 </h2>
                 <p className="text-sm sm:text-base text-[var(--ink-secondary)] mt-1.5 max-w-2xl leading-relaxed">
-                  Engineering is an end-to-end discipline. I work across the entire lifecycle — from uncovering the true user problem through Figma wireframing to database schemas, CI/CD delivery, and long-term production telemetry.
+                  I approach software engineering as an end-to-end discipline. Rather than focusing solely on implementation details, I prioritize deep domain understanding, resilient system architecture, and long-term operational excellence to deliver true business value.
                 </p>
               </div>
               <div className="font-mono text-xs text-[var(--accent)] font-semibold">

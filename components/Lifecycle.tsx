@@ -8,24 +8,63 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 export function Lifecycle() {
   const [activeStageIndex, setActiveStageIndex] = useState(0);
   const stageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollWrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    
+    const mm = gsap.matchMedia();
 
-    stageRefs.current.forEach((el, index) => {
-      if (!el) return;
+    // Desktop: Vertical scroll with left matrix
+    mm.add("(min-width: 1024px)", () => {
+      stageRefs.current.forEach((el, index) => {
+        if (!el) return;
 
-      ScrollTrigger.create({
-        trigger: el,
-        start: "top 60%",
-        end: "bottom 60%",
-        onEnter: () => setActiveStageIndex(index),
-        onEnterBack: () => setActiveStageIndex(index),
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top 60%",
+          end: "bottom 60%",
+          onEnter: () => setActiveStageIndex(index),
+          onEnterBack: () => setActiveStageIndex(index),
+        });
+      });
+    });
+
+    // Mobile: Pinned Horizontal Scroll
+    mm.add("(max-width: 1023px)", () => {
+      if (!containerRef.current || !scrollWrapperRef.current) return;
+
+      const totalWidth = scrollWrapperRef.current.scrollWidth;
+      const viewportWidth = window.innerWidth;
+
+      const scrollTween = gsap.to(scrollWrapperRef.current, {
+        x: -(totalWidth - viewportWidth + 40), // 40px for margin/padding compensation
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          pin: true,
+          scrub: 1,
+          end: () => `+=${totalWidth}`,
+        },
+      });
+
+      // Track active index based on horizontal position
+      stageRefs.current.forEach((el, index) => {
+        if (!el) return;
+        ScrollTrigger.create({
+          trigger: el,
+          containerAnimation: scrollTween,
+          start: "left center",
+          end: "right center",
+          onEnter: () => setActiveStageIndex(index),
+          onEnterBack: () => setActiveStageIndex(index),
+        });
       });
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      mm.revert();
     };
   }, []);
 
@@ -37,7 +76,7 @@ export function Lifecycle() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-hidden" ref={containerRef}>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start relative">
         {/* Left Sticky Controller (Desktop Only) */}
         <aside className="hidden lg:block lg:col-span-4 lg:sticky lg:top-24 space-y-6">
@@ -45,7 +84,7 @@ export function Lifecycle() {
             <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] border-b border-[var(--line-faint)] pb-3 mb-4">
               <span>LIFECYCLE MATRIX</span>
               <span className="text-[var(--accent)] font-semibold">
-                [{LIFECYCLE_STAGES[activeStageIndex].step}/0{LIFECYCLE_STAGES.length}]
+                [{LIFECYCLE_STAGES[activeStageIndex]?.step || "01"}/0{LIFECYCLE_STAGES.length}]
               </span>
             </div>
 
@@ -89,21 +128,25 @@ export function Lifecycle() {
           </div>
         </aside>
 
-        {/* Right Flowing Stages (Horizontal Snap on Mobile) */}
-        <div className="lg:col-span-8 flex lg:block overflow-x-auto snap-x snap-mandatory lg:overflow-visible gap-5 lg:gap-0 lg:space-y-6 pb-6 lg:pb-0 -mx-5 px-5 lg:mx-0 lg:px-0 no-scrollbar">
-          {LIFECYCLE_STAGES.map((stage, idx) => {
-            const isActive = idx === activeStageIndex;
-            return (
-              <div
-                key={stage.step}
-                ref={(el) => {
-                  stageRefs.current[idx] = el;
-                }}
-                className={`flex-none w-[85vw] sm:w-[400px] lg:w-auto snap-center p-6 sm:p-8 border transition-all duration-300 ${isActive
-                    ? "border-[var(--ink)] bg-[var(--paper-card)] shadow-sm lg:-translate-y-0.5"
-                    : "border-[var(--line-faint)] bg-[var(--paper)] opacity-90 sm:opacity-85 hover:opacity-100"
-                  }`}
-              >
+        {/* Right Flowing Stages */}
+        <div className="lg:col-span-8">
+          <div 
+            ref={scrollWrapperRef}
+            className="flex lg:block flex-nowrap gap-5 lg:gap-0 lg:space-y-6 w-max lg:w-auto"
+          >
+            {LIFECYCLE_STAGES.map((stage, idx) => {
+              const isActive = idx === activeStageIndex;
+              return (
+                <div
+                  key={stage.step}
+                  ref={(el) => {
+                    stageRefs.current[idx] = el;
+                  }}
+                  className={`flex-none w-[85vw] sm:w-[400px] lg:w-auto p-6 sm:p-8 border transition-all duration-300 ${isActive
+                      ? "border-[var(--ink)] bg-[var(--paper-card)] shadow-sm lg:-translate-y-0.5"
+                      : "border-[var(--line-faint)] bg-[var(--paper)] opacity-90 sm:opacity-85 hover:opacity-100"
+                    }`}
+                >
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--line-faint)] pb-3 mb-4">
                   <div className="flex items-center gap-2 font-mono text-xs">
                     <span className="text-[var(--accent)] font-bold">{stage.step}</span>
@@ -143,6 +186,7 @@ export function Lifecycle() {
               </div>
             );
           })}
+          </div>
         </div>
       </div>
     </div>

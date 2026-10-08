@@ -8,6 +8,7 @@ export interface WritingArticle {
   link?: string;
   isExternal?: boolean;
   publication?: string;
+  image?: string;
 }
 
 export interface ResearchPublication {
@@ -20,28 +21,22 @@ export interface ResearchPublication {
   metadata: string;
   topics: string[];
   link?: string;
+  image?: string;
+  logo?: string;
 }
 
 export const ARTICLES: WritingArticle[] = [
   {
-    id: "acquisition-vs-retention-passes",
-    title: "Acquisition Is Being Automated. Retention Is What’s Left.",
-    description:
-      "Why I stopped thinking about wallet passes as digital loyalty cards and started treating them as permanent, push-enabled communication and identity channels.",
+    id: "when-discovery-gets-automated",
+    title: "When Discovery Gets Automated, What Happens to the Customer Relationship?",
+    description: "Why I stopped thinking about wallet passes as loyalty cards",
     type: "Essay",
-    date: "Sep 2026",
-    metadata: "Essay · Sep 2026",
-    publication: "Substack"
-  },
-  {
-    id: "ai-agents-need-passes",
-    title: "AI agents are going to need passes too",
-    description:
-      "Notes on identity, cryptographic permissioning, single-use tokens, and wallet infrastructure for autonomous agentic software interacting with physical and digital systems.",
-    type: "Technology",
-    date: "2026",
-    metadata: "Technology · 2026",
-    publication: "Substack"
+    date: "Sep 25, 2026",
+    metadata: "Essay · Sep 25, 2026",
+    publication: "Substack",
+    link: "https://manuelbiolatiri.substack.com/p/when-discovery-gets-automated-what",
+    isExternal: true,
+    image: "https://substackcdn.com/image/fetch/$s_!iGvD!,f_auto,q_auto:best,fl_progressive:steep/https%3A%2F%2Fmanuelbiolatiri.substack.com%2Ftwitter%2Fsubscribe-card.jpg%3Fv%3D128031378%26version%3D9"
   }
 ];
 
@@ -56,6 +51,9 @@ export const PUBLISHED_RESEARCH: ResearchPublication[] = [
     date: "May 2026",
     role: "Co-author · Research publication",
     metadata: "Next Research / Elsevier, May 2026",
-    topics: ["Materials Chemistry", "Biomass Biochars", "Heavy Metals Adsorption", "Morphological Characterisation"]
+    topics: ["Materials Chemistry", "Biomass Biochars", "Heavy Metals Adsorption", "Morphological Characterisation"],
+    link: "https://www.sciencedirect.com/science/article/abs/pii/S3050475926005555",
+    image: "/images/next-research.gif",
+    logo: "/images/elsevier-non-solus-new-grey.svg"
   }
 ];

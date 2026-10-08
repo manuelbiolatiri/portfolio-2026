@@ -137,9 +137,7 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.15}>
-            <WalletKitDiagram />
-          </ScrollReveal>
+
         </section>
 
         {/* 4. WRITING & RESEARCH SECTION */}
@@ -147,112 +145,65 @@ export default function Home() {
           <ScrollReveal>
             <SectionLabel number="04" label="Writing &amp; Research" className="mb-6" />
 
-            <div className="mb-8 pb-5 border-b border-[var(--line-faint)] flex flex-col md:flex-row md:items-end justify-between gap-4">
-              <div>
-                <h2
-                  id="writing-title"
-                  className="font-serif text-3xl sm:text-4xl text-[var(--ink)] font-normal"
-                >
-                  Notes, Architecture &amp; Published Research
-                </h2>
-                <p className="text-sm text-[var(--muted)] mt-1.5 max-w-xl">
-                  Notes from things I am building and trying to understand, alongside peer-reviewed academic literature.
-                </p>
-              </div>
-              <div className="font-mono text-xs text-[var(--muted)]">
-                Substack &amp; Elsevier / Next Research
-              </div>
+            <div className="mb-8 pb-5 border-b border-[var(--line-faint)]">
+              <h2
+                id="writing-title"
+                className="font-sans text-3xl sm:text-4xl text-white font-medium tracking-tight"
+              >
+                Writing &amp; Research
+              </h2>
+              <p className="text-sm sm:text-base text-zinc-400 mt-2 max-w-2xl">
+                Essays on systems architecture and engineering, alongside peer-reviewed academic literature.
+              </p>
             </div>
           </ScrollReveal>
 
-          {/* Technical Articles */}
-          <div className="space-y-4 mb-10">
-            <div className="flex items-center gap-2 font-mono text-xs text-[var(--muted)] uppercase tracking-wider mb-2">
-              <span>Technical Essays &amp; Architecture Notes</span>
+          <div className="space-y-12">
+            {/* Technical Articles */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 font-mono text-xs text-[var(--muted)] uppercase tracking-wider mb-3">
+                <span>Technical Essays &amp; Architecture Notes</span>
+              </div>
+              <div>
+                {ARTICLES.map((article, idx) => (
+                  <ScrollReveal key={article.id} delay={idx * 0.1}>
+                    <WritingCard article={article} />
+                  </ScrollReveal>
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {ARTICLES.map((article, idx) => (
-                <ScrollReveal key={article.id} delay={idx * 0.1}>
-                  <WritingCard article={article} />
-                </ScrollReveal>
-              ))}
+
+            {/* Academic Research (Separate from Substack) */}
+            <div className="space-y-4">
+              <ScrollReveal delay={0.2}>
+                <div className="flex items-center gap-2 font-mono text-xs text-[var(--muted)] uppercase tracking-wider mb-3">
+                  <span>Published Academic Research</span>
+                </div>
+                <div>
+                  {PUBLISHED_RESEARCH.map((pub) => (
+                    <ResearchCard key={pub.id} publication={pub} />
+                  ))}
+                </div>
+              </ScrollReveal>
             </div>
           </div>
-
-          {/* Academic Research (Separate from Substack) */}
-          <ScrollReveal delay={0.2}>
-            <div className="space-y-4">
-              <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] uppercase tracking-wider mb-2">
-                <span className="w-1.5 h-1.5 bg-[var(--accent)]" />
-                <span>Published Academic Research</span>
-              </div>
-              {PUBLISHED_RESEARCH.map((pub) => (
-                <ResearchCard key={pub.id} publication={pub} />
-              ))}
-            </div>
-          </ScrollReveal>
         </section>
 
         {/* 5. ABOUT SECTION */}
-        <section id="about" aria-labelledby="about-title">
+        <section id="about" aria-labelledby="about-title" className="py-10">
           <ScrollReveal>
-            <SectionLabel number="05" label="About Emmanuel" className="mb-6" />
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <h3
+                id="about-title"
+                className="font-sans text-3xl sm:text-5xl text-white font-medium leading-tight tracking-tight"
+              >
+                Architecture starts with user intent, not the database.
+              </h3>
 
-            <div className="border border-[var(--line-faint)] bg-[var(--paper)] p-6 sm:p-10">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-                {/* Left narrative */}
-                <div className="lg:col-span-7 space-y-6">
-                  <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-semibold block">
-                    Core Narrative &amp; Engineering Philosophy
-                  </span>
-
-                  <h3
-                    id="about-title"
-                    className="font-serif text-2xl sm:text-3xl text-[var(--ink)] font-normal leading-snug"
-                  >
-                    I started closer to the interface than the infrastructure.
-                  </h3>
-
-                  <div className="space-y-4 text-base text-[var(--ink-secondary)] leading-relaxed">
-                    <p>
-                      I studied Industrial Chemistry, moved into software through self-directed learning, and began by experimenting with interfaces and Figma before moving deeper into backend systems.
-                    </p>
-                    <p>
-                      That still shapes how I think about engineering: architecture starts with what someone is trying to accomplish, not with the database. Understanding user intent and commercial flow leads to cleaner boundaries, better APIs, and systems that scale gracefully without premature complexity.
-                    </p>
-                    <p className="text-sm text-[var(--muted)] pt-2 border-t border-[var(--line-faint)]">
-                      Today, I operate across the UK and international markets, building resilient payment infrastructure, distributed cloud services, and native digital wallet platforms.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Right timeline */}
-                <div className="lg:col-span-5 bg-[var(--paper-card)] p-5 border border-[var(--line-faint)]">
-                  <span className="font-mono text-xs uppercase tracking-wider text-[var(--muted)] block mb-4 border-b border-[var(--line-faint)] pb-2">
-                    Trajectory &amp; Focus Evolution
-                  </span>
-
-                  <div className="relative pl-6 space-y-5 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-px before:bg-[var(--line)]">
-                    {careerTimeline.map((item, index) => (
-                      <div key={index} className="relative group">
-                        {/* Node indicator */}
-                        <span className="absolute -left-[29px] top-1.5 w-2.5 h-2.5 border border-[var(--ink)] bg-[var(--paper)] group-hover:bg-[var(--accent)] transition-colors" />
-
-                        <div className="flex items-baseline justify-between gap-2">
-                          <span className="font-serif text-sm font-medium text-[var(--ink)]">
-                            {item.label}
-                          </span>
-                          <span className="font-mono text-[10px] text-[var(--accent)]">
-                            {item.year}
-                          </span>
-                        </div>
-                        <p className="text-xs text-[var(--muted)] mt-0.5 leading-snug">
-                          {item.desc}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <div className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto">
+                <p>
+                  My background in Industrial Chemistry and my self-taught roots in UI design fundamentally shaped my approach to backend engineering. I build resilient payment pipelines and digital wallet platforms across the UK by focusing on clear boundaries, clean APIs, and systems that scale without premature complexity.
+                </p>
               </div>
             </div>
           </ScrollReveal>
@@ -276,27 +227,28 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row md:flex-col gap-3">
+              <div className="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto">
                 <a
-                  href="mailto:hello@manuelbiolatiri.me"
-                  className="px-6 py-3 border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] hover:bg-[var(--accent)] hover:border-[var(--accent)] text-xs font-mono text-center tracking-widest uppercase transition-all duration-150 shadow-sm"
+                  href="mailto:manuelbiolatiri@gmail.com"
+                  className="w-full px-6 py-3 rounded-full bg-white text-black hover:bg-zinc-200 text-sm font-medium text-center transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
                 >
-                  hello@manuelbiolatiri.me
+                  manuelbiolatiri@gmail.com
                 </a>
-                <div className="flex items-center gap-2">
+
+                <div className="flex items-center gap-2 mt-2">
                   <a
                     href="https://github.com/manuelbiolatiri"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 px-4 py-2 border border-[var(--line)] bg-[var(--paper)] text-xs font-mono text-center text-[var(--ink)] hover:border-[var(--ink)] transition-colors"
+                    className="flex-1 px-4 py-2 rounded-full border border-[var(--line-strong)] bg-[var(--paper-card)] text-sm font-medium text-center text-[var(--ink)] hover:border-[var(--ink)] transition-colors"
                   >
                     GitHub ↗
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/emmanuel-biolatiri-708546109"
+                    href="https://www.linkedin.com/in/emmanuel-biolatiri"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 px-4 py-2 border border-[var(--line)] bg-[var(--paper)] text-xs font-mono text-center text-[var(--ink)] hover:border-[var(--ink)] transition-colors"
+                    className="flex-1 px-4 py-2 rounded-full border border-[var(--line-strong)] bg-[var(--paper-card)] text-sm font-medium text-center text-[var(--ink)] hover:border-[var(--ink)] transition-colors"
                   >
                     LinkedIn ↗
                   </a>

@@ -1,33 +1,58 @@
 import { WritingArticle } from "@/data/writing";
+import Image from "next/image";
 
 interface WritingCardProps {
   article: WritingArticle;
 }
 
 export function WritingCard({ article }: WritingCardProps) {
-  return (
-    <article className="border border-[var(--line)] bg-[var(--paper)] p-6 sm:p-7 hover:border-[var(--accent)] transition-all duration-150 flex flex-col justify-between group">
-      <div>
-        <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] mb-3">
-          <span className="text-[var(--accent)] font-medium">[{article.type}]</span>
-          <span>{article.date}</span>
+  const CardContent = (
+    <div className="flex flex-col md:flex-row h-full">
+      <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+        <div>
+          <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] mb-5">
+            <span className="text-white font-medium">[{article.type}]</span>
+            <span>{article.date}</span>
+          </div>
+
+          <h3 className="font-sans text-xl sm:text-2xl text-white font-medium group-hover:text-zinc-300 transition-colors leading-snug">
+            {article.title}
+          </h3>
+
+          <p className="mt-4 text-sm text-zinc-400 leading-relaxed">
+            {article.description}
+          </p>
         </div>
 
-        <h3 className="font-serif text-xl sm:text-2xl text-[var(--ink)] font-normal group-hover:text-[var(--accent)] transition-colors leading-snug">
-          {article.title}
-        </h3>
-
-        <p className="mt-3 text-sm text-[var(--ink-secondary)] leading-relaxed">
-          {article.description}
-        </p>
+        <div className="mt-8 pt-5 border-t border-[var(--line-faint)] flex items-center justify-between font-mono text-xs text-[var(--muted)]">
+          <span>{article.publication || "Substack"}</span>
+          <span className="text-white group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+            Read ↗
+          </span>
+        </div>
       </div>
 
-      <div className="mt-6 pt-4 border-t border-[var(--line-faint)] flex items-center justify-between font-mono text-xs text-[var(--muted)]">
-        <span>{article.publication || "Substack"}</span>
-        <span className="text-[var(--ink)] group-hover:text-[var(--accent)] inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-          Read essay ↗
-        </span>
-      </div>
-    </article>
+      {article.image && (
+        <div className="w-full md:w-[35%] relative border-t md:border-t-0 md:border-l border-[var(--line-faint)] overflow-hidden min-h-[220px] flex flex-col items-center justify-center bg-zinc-950/50 p-6">
+          <img
+            src={article.image}
+            alt={article.title}
+            className="w-full max-w-[220px] object-contain group-hover:scale-105 transition-transform duration-500 rounded-md shadow-2xl shadow-black/50"
+          />
+        </div>
+      )}
+    </div>
   );
+
+  const className = "border border-[var(--line)] bg-[var(--paper-card)] rounded-2xl overflow-hidden hover:border-zinc-500 transition-all duration-300 flex flex-col h-full group";
+
+  if (article.link) {
+    return (
+      <a href={article.link} target="_blank" rel="noopener noreferrer" className={className}>
+        {CardContent}
+      </a>
+    );
+  }
+
+  return <article className={className}>{CardContent}</article>;
 }

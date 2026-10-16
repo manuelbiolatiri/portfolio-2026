@@ -68,7 +68,7 @@ export const WORK_PROJECTS: WorkProject[] = [
     company: "Obiex",
     role: "Backend Developer",
     period: "11/2021 — 03/2023",
-    location: "Digital Finance · Remote / Lagos",
+    location: "Digital Finance · Remote / Enugu",
     employmentType: "Full-time",
     tagline: "High-volume utility payment services, performance optimization, automated load testing, and growth engineering.",
     tags: [

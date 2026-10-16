@@ -34,7 +34,7 @@ export default function Home() {
         <section id="experience" aria-labelledby="experience-title" className="scroll-mt-24">
           <div id="work" />
           <ScrollReveal>
-            <SectionLabel number="01" label="Selected Experience" className="mb-6" />
+            <SectionLabel number="01" label="Experience" className="mb-6" />
 
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 pb-5 border-b border-[var(--line-faint)]">
               <div>
@@ -42,15 +42,11 @@ export default function Home() {
                   id="experience-title"
                   className="font-serif text-5xl sm:text-7xl text-[var(--ink)] font-normal leading-none tracking-tight"
                 >
-                  Selected Experience
+                  Experience
                 </h2>
                 <p className="text-sm sm:text-base text-[var(--muted)] mt-1.5 max-w-2xl leading-relaxed">
                   Backend systems, payment infrastructure, and commercial platforms across fintech and commerce.
                 </p>
-              </div>
-              <div className="font-mono text-xs text-[var(--muted)] flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Experience · 2021 — Present</span>
               </div>
             </div>
           </ScrollReveal>

@@ -10,6 +10,7 @@ export function Header() {
     { label: "About", href: "#about" },
     { label: "Work", href: "#work" },
     { label: "walletKit", href: "#walletkit" },
+    { label: "Labs", href: "https://labs.manuelbiolatiri.me" },
     { label: "Writing", href: "#writing" },
   ];
 

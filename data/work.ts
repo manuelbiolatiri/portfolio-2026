@@ -1,85 +1,93 @@
 export interface WorkProject {
   id: string;
-  title: string;
+  company: string;
+  role: string;
+  period: string;
+  location: string;
+  employmentType: "Full-time" | "Contract" | "Founder";
   tagline: string;
-  description: string;
-  metadata: string;
   tags: string[];
-  link?: string;
-  linkText?: string;
-  isExternal?: boolean;
-  highlight?: boolean;
-  scope: string;
   points: string[];
-  metrics?: { label: string; value: string }[];
 }
 
 export const WORK_PROJECTS: WorkProject[] = [
   {
     id: "nethub",
-    title: "NetHub Platform Infrastructure",
-    tagline: "Payments, subscriptions, platform services, CI/CD and production ownership across commercial systems.",
-    description:
-      "Engineered core payment and subscription infrastructure powering multi-tenant commercial operations. Focused on transactional integrity, idempotent billing webhook ingestion, resilient queue-based event processing, and automated zero-downtime deployment pipelines.",
-    metadata: "Payments · Platform · Production",
-    tags: ["Payment Systems", "Platform Services", "Distributed Systems", "CI/CD", "AWS"],
-    scope: "Platform & Payments Infrastructure",
-    points: [
-      "Designed and maintained payment state machines handling recurring subscriptions, complex billing cycles, and automated recovery.",
-      "Engineered idempotent webhook processing and transactional outbox patterns to guarantee at-least-once delivery without double-charge risk.",
-      "Owned CI/CD pipelines, containerization, and AWS production infrastructure, ensuring consistent zero-downtime releases.",
-      "Implemented comprehensive application monitoring, structured audit logging, and automated health probing."
+    company: "NetHub",
+    role: "Senior Software Engineer",
+    period: "04/2023 — Present",
+    location: "Manchester, UK",
+    employmentType: "Full-time",
+    tagline: "Technical ownership across multi-tenant payments, dual-region Stripe architecture, CI/CD pipelines, and AI systems.",
+    tags: [
+      "Node.js (NestJS)",
+      "TypeScript",
+      "Stripe Connect",
+      "AWS (ECR & EC2)",
+      "Docker",
+      "Bitbucket Pipelines",
+      "OpenAI APIs",
+      "PostgreSQL"
     ],
-    metrics: [
-      { label: "Architecture", value: "Event-Driven & Idempotent" },
-      { label: "Cloud & Ops", value: "AWS · Docker · CI/CD" },
-      { label: "Focus", value: "Zero-Downtime Reliability" }
-    ]
+    points: [
+      "Technical owner of multiple production services, responsible for system architecture, 99.9%+ availability, and day-to-day operational health.",
+      "Designed and implemented dual-Stripe-account architecture routing UK, Ireland, and US organisations through region-specific payment rails, directly unlocking NetHub's expansion into the US market.",
+      "Rebuilt and scaled subscription and billing infrastructure end-to-end, covering Stripe Connect, subscriber lifecycle state machines, trial periods, prorations, immutable transaction ledgers, pricing updates, and automated recurring billing.",
+      "Implemented an AI-powered image generation feature for community posts, engineering server-side prompt crafting, token/usage controls, rate-limiting, and production content safeguards.",
+      "Established NetHub's CI/CD and deployment infrastructure from zero using Bitbucket Pipelines, Docker, AWS ECR, and EC2; 100% of subsequent service releases ship reliably through this pipeline."
+    ],
   },
   {
-    id: "walletkit",
-    title: "walletKit",
-    tagline: "Apple and Google Wallet infrastructure for membership, events, entitlement, updates and validation.",
-    description:
-      "An infrastructure platform that transforms mobile passes from static digital barcodes into live, push-enabled communication and identity channels. Solves cryptographic pass signing, dynamic manifest generation, APNs/Google push synchronization, and low-latency validation.",
-    metadata: "Wallet infrastructure · 2026 →",
-    tags: ["Apple Wallet", "Google Wallet", "PKPass", "Push Infrastructure", "Cryptography"],
-    link: "https://walletkit.app",
-    linkText: "walletkit.app",
-    isExternal: true,
-    highlight: true,
-    scope: "Founder & System Architect",
-    points: [
-      "Built automated cryptographic PKCS#7 signing pipelines and dynamic manifest generation for Apple Wallet (.pkpass) and Google Wallet JWT objects.",
-      "Architected APNs push notification engines and Google Wallet REST sync to update live passes silently on user devices upon balance or event changes.",
-      "Engineered low-latency verification scanner endpoints supporting both online validation and offline cryptographically verifiable tokens.",
-      "Designed developer-first API contracts, webhooks, and pass lifecycle webhooks for seamless platform integration."
+    id: "ab-inbev",
+    company: "AB InBev",
+    role: "Backend Developer (Contract)",
+    period: "10/2022 — 12/2023",
+    location: "Pan-African Markets · Remote",
+    employmentType: "Contract",
+    tagline: "Microservices ownership and mission-critical enterprise ERP migration for Kuja, operating across multiple African markets.",
+    tags: [
+      "Microservices",
+      "SAP (NewGen)",
+      "Salesforce ERP",
+      "Datadog",
+      "Node.js",
+      "PostgreSQL",
+      "Enterprise Commerce",
+      "Data Migration"
     ],
-    metrics: [
-      { label: "Platforms", value: "Apple & Google Wallet" },
-      { label: "Security", value: "PKCS#7 Signed Manifests" },
-      { label: "Status", value: "In Active Production" }
-    ]
+    points: [
+      "Led the migration from Salesforce ERP to SAP (NewGen) through Kuja, handling customer identity mapping, schema transformation, and data migration to eliminate redundant licensing and reduce operational costs by 20%.",
+      "Owned and maintained the order, invoice, and rewards microservices powering high-throughput distributor purchasing across multiple African regional markets.",
+      "Partnered closely with DevOps and product teams to support safe production deployments, live schema migrations, and zero-downtime hotfixes.",
+      "Implemented comprehensive system observability, tracing, and automated alerting via Datadog to uphold high reliability across distributed commercial microservices.",
+      "Ensured rigorous transactional consistency between Kuja distributor channels and central enterprise ERP financial reporting ledgers."
+    ],
   },
   {
-    id: "kuja",
-    title: "Kuja / AB InBev",
-    tagline: "Commercial backend systems operating across African markets, with an emphasis on distributed services, scale and production reliability.",
-    description:
-      "Commercial enterprise backend architecture serving high-velocity distribution channels across emerging markets. Tackled distributed data consistency, offline-tolerant synchronization, and reliable transaction processing across variable connectivity conditions.",
-    metadata: "Backend systems · Africa",
-    tags: ["Distributed Services", "Commercial Systems", "Resilience", "Data Scale"],
-    scope: "Commercial Distributed Backend",
-    points: [
-      "Architected distributed backend services managing commercial ordering, inventory tracking, and transaction settlement across African regional hubs.",
-      "Engineered resilient data sync strategies capable of handling network partitions, transient disconnects, and deferred reconciliation.",
-      "Optimized query performance and schema designs for high-throughput relational databases operating under peak seasonal retail demand.",
-      "Established strict service boundaries, contract testing, and asynchronous messaging pipelines between core commercial modules."
+    id: "obiex",
+    company: "Obiex",
+    role: "Backend Developer",
+    period: "11/2021 — 03/2023",
+    location: "Digital Finance · Remote / Lagos",
+    employmentType: "Full-time",
+    tagline: "High-volume utility payment services, performance optimization, automated load testing, and growth engineering.",
+    tags: [
+      "Node.js",
+      "TypeScript",
+      "Jest",
+      "Apache JMeter",
+      "PostgreSQL",
+      "Bills Payment Rails",
+      "API Integrations",
+      "Performance Tuning"
     ],
-    metrics: [
-      { label: "Footprint", value: "Pan-African Distribution" },
-      { label: "Topology", value: "Distributed Microservices" },
-      { label: "Engineering", value: "Partition & Fault Tolerant" }
-    ]
+    points: [
+      "Steered user acquisition initiatives by designing and building the promotions and tasks reward feature, driving an increase in user acquisition of 300%.",
+      "Owned and maintained Obiex's high-reliability bills-payment service covering electricity, airtime, mobile data, betting, and education payments on its digital finance platform.",
+      "Enhanced database queries and data aggregation pipelines by up to 50%, significantly reducing processing turnaround for heavy financial and marketing reports over 6 months.",
+      "Ensured comprehensive testing coverage through unit, integration, stress, and load testing pipelines using Jest and Apache JMeter.",
+      "Worked directly with third-party institutional partners during onboarding, simplifying authentication flows and streamlining integration with Obiex's public APIs.",
+      "Authored structured technical specifications, architecture diagrams, and documentation to align technical requirements between engineering teams and non-technical stakeholders."
+    ],
   }
 ];

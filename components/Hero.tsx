@@ -110,10 +110,10 @@ export function Hero() {
 
         <div className="mt-8 sm:mt-10 flex flex-row items-center gap-4">
           <a
-            href="#work"
+            href="#experience"
             className="px-6 py-3 rounded-full bg-white text-black hover:bg-zinc-200 text-sm font-medium transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
           >
-            View Work
+            View Experience
           </a>
           <a
             href="#writing"

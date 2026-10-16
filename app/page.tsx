@@ -14,17 +14,6 @@ import { WORK_PROJECTS } from "@/data/work";
 import { ARTICLES, PUBLISHED_RESEARCH } from "@/data/writing";
 
 export default function Home() {
-  const careerTimeline = [
-    { label: "Industrial Chemistry", desc: "Materials research & laboratory rigor", year: "Origin" },
-    { label: "Computer Training", desc: "Foundational computer science & systems basics", year: "Foundation" },
-    { label: "Self-directed JavaScript", desc: "Front-end mechanics, browser execution & web primitives", year: "Transition" },
-    { label: "Early Projects", desc: "Product experiments, UI prototypes & rapid shipping", year: "Applied" },
-    { label: "Fintech", desc: "Payment gateways, state machines & regulatory rails", year: "Domain" },
-    { label: "Commercial Systems", desc: "Distributed order management & enterprise logistics", year: "Scale" },
-    { label: "Platform Engineering", desc: "Cloud architecture, CI/CD pipelines & production uptime", year: "Operations" },
-    { label: "walletKit", desc: "Digital wallet infrastructure, PKCS#7 signing & push sync", year: "Current" },
-  ];
-
   return (
     <div className="min-h-screen flex flex-col bg-[var(--paper)] text-[var(--ink)] relative selection:bg-[var(--accent)] selection:text-[var(--paper)]">
       {/* Precision drafting cursor & viewport coordinate HUD */}
@@ -41,32 +30,34 @@ export default function Home() {
           <Hero />
         </section>
 
-        {/* 1. SELECTED WORK */}
-        <section id="work" aria-labelledby="work-title">
+        {/* 1. PROFESSIONAL EXPERIENCE & SYSTEMS */}
+        <section id="experience" aria-labelledby="experience-title" className="scroll-mt-24">
+          <div id="work" />
           <ScrollReveal>
-            <SectionLabel number="01" label="Selected Work &amp; Systems" className="mb-6" />
+            <SectionLabel number="01" label="Selected Experience" className="mb-6" />
 
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 pb-5 border-b border-[var(--line-faint)]">
               <div>
                 <h2
-                  id="work-title"
-                  className="font-serif text-3xl sm:text-4xl text-[var(--ink)] font-normal"
+                  id="experience-title"
+                  className="font-serif text-5xl sm:text-7xl text-[var(--ink)] font-normal leading-none tracking-tight"
                 >
-                  Commercial Architecture &amp; Core Systems
+                  Selected Experience
                 </h2>
-                <p className="text-sm text-[var(--muted)] mt-1.5 max-w-xl">
-                  High-scale payment pipelines, commercial distributed services, and mobile wallet platforms designed for production resilience.
+                <p className="text-sm sm:text-base text-[var(--muted)] mt-1.5 max-w-2xl leading-relaxed">
+                  Backend systems, payment infrastructure, and commercial platforms across fintech and commerce.
                 </p>
               </div>
-              <div className="font-mono text-xs text-[var(--muted)]">
-                Work · 2020 — Present
+              <div className="font-mono text-xs text-[var(--muted)] flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Experience · 2021 — Present</span>
               </div>
             </div>
           </ScrollReveal>
 
-          <div className="space-y-2">
+          <div className="space-y-4">
             {WORK_PROJECTS.map((project, index) => (
-              <ScrollReveal key={project.id} delay={index * 0.1}>
+              <ScrollReveal key={project.id} delay={index * 0.08}>
                 <WorkItem project={project} index={index} />
               </ScrollReveal>
             ))}
@@ -130,8 +121,6 @@ export default function Home() {
               </a>
             </div>
           </ScrollReveal>
-
-
         </section>
 
         {/* 4. WRITING & RESEARCH SECTION */}

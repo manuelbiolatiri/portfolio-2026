@@ -10,7 +10,7 @@ export function Header() {
     { label: "About", href: "#about" },
     { label: "Experience", href: "#experience" },
     { label: "walletKit", href: "#walletkit" },
-    { label: "Labs", href: "https://labs.manuelbiolatiri.me" },
+    { label: "Labs", href: "https://labs.manuelbiolatiri.me", external: true },
     { label: "Writing", href: "#writing" },
   ];
 
@@ -34,6 +34,8 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
               className="text-[var(--muted)] hover:text-[var(--ink)] transition-colors duration-150 py-1 font-mono text-xs uppercase tracking-widest relative group"
             >
               <span>{link.label}</span>
@@ -75,6 +77,8 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-2 text-[var(--ink)] hover:text-[var(--accent)] flex items-center justify-between border-b border-[var(--line-faint)]"
               >
